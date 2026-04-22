@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>CraftHost | Premium Minecraft Server Hosting</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0c12;
+            color: #eef2ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1e2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5b6cff;
+            border-radius: 10px;
+        }
+
+        /* container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* background accent */
+        .bg-accent {
+            background: linear-gradient(135deg, #0b0f1a 0%, #0f1320 100%);
+        }
+
+        /* buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #2d3a6e;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .btn-primary {
+            background: #5b6cff;
+            box-shadow: 0 8px 20px rgba(91, 108, 255, 0.25);
+        }
+        .btn-primary:hover {
+            background: #3e4ed9;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(91, 108, 255, 0.35);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #5b6cff;
+            color: #eef2ff;
+        }
+        .btn-outline:hover {
+            background: rgba(91, 108, 255, 0.1);
+            border-color: #7b89ff;
+        }
+
+        /* navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #ffffff, #9ab3ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo i {
+            background: none;
+            color: #5b6cff;
+            margin-right: 6px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #cbd5f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: white;
+        }
+
+        /* hero section */
+        .hero {
+            padding: 70px 0 80px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .hero-content {
+            flex: 1;
+        }
+        .hero-badge {
+            background: rgba(91, 108, 255, 0.2);
+            backdrop-filter: blur(4px);
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #b1c2ff;
+            margin-bottom: 24px;
+            border: 1px solid rgba(91,108,255,0.4);
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #ffffff, #c0cdff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #b9c3e6;
+            max-width: 550px;
+            margin-bottom: 32px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-stats {
+            flex: 1;
+            background: rgba(20, 25, 40, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 32px;
+            border: 1px solid rgba(91,108,255,0.3);
+            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.4);
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        .stat-item h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #5b6cff;
+        }
+        .stat-item p {
+            font-size: 0.9rem;
+            color: #a7b2da;
+        }
+        .minecraft-icon {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* features */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .section-sub {
+            text-align: center;
+            color: #9aa5ce;
+            max-width: 650px;
+            margin: 0 auto 48px auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin: 50px 0;
+        }
+        .feature-card {
+            background: #11161f;
+            padding: 30px 24px;
+            border-radius: 28px;
+            transition: 0.25s ease;
+            border: 1px solid #1e2538;
+            backdrop-filter: blur(2px);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            border-color: #5b6cff;
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.5);
+        }
+        .feature-icon {
+            font-size: 2.4rem;
+            color: #5b6cff;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .feature-card p {
+            color: #b2bddf;
+        }
+
+        /* pricing */
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin: 60px 0 40px;
+        }
+        .plan {
+            background: #0e121c;
+            border-radius: 32px;
+            padding: 32px 28px;
+            width: 300px;
+            border: 1px solid #232a3f;
+            transition: all 0.2s;
+        }
+        .plan.popular {
+            border: 1px solid #5b6cff;
+            box-shadow: 0 10px 25px -8px #5b6cff40;
+            background: #101624;
+            transform: scale(1.02);
+        }
+        .plan-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+        }
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 20px 0 10px;
+            color: #eef2ff;
+        }
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8f9ed4;
+        }
+        .plan-features {
+            list-style: none;
+            margin: 25px 0;
+        }
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #1f263b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .plan-features i {
+            color: #5b6cff;
+            width: 20px;
+        }
+        .btn-plan {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* cta section */
+        .cta-section {
+            background: linear-gradient(145deg, #0b0f17, #0d1220);
+            border-radius: 48px;
+            margin: 80px 0;
+            padding: 60px 40px;
+            text-align: center;
+            border: 1px solid #252d44;
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .cta-section .btn-primary {
+            margin-top: 24px;
+        }
+
+        /* footer */
+        .footer {
+            border-top: 1px solid #1a1f2c;
+            padding: 48px 0 32px;
+            margin-top: 40px;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .footer-links {
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: #b3bef0;
+            text-decoration: none;
+        }
+        .footer-copyright {
+            text-align: center;
+            margin-top: 48px;
+            color: #6c789c;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .navbar {
+                flex-direction: column;
+            }
+            .nav-links {
+                gap: 20px;
+            }
+            .hero-stats {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-cube"></i> CraftHost
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Plans</a>
+            <a href="#">Control Panel</a>
+            <a href="#" class="btn btn-outline" style="padding: 8px 20px;">Dashboard</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-server"></i>  Powered by Ryzen 9 & NVMe
+                </div>
+                <h1>Ultimate Minecraft Hosting<br>Zero Lag, Pure Play</h1>
+                <p>Unlimited DDoS protection, instant setup, and 24/7 expert support. Your world, our power.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+                    <a href="#pricing" class="btn btn-outline"><i class="fas fa-tags"></i> View Plans</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <h3>99.99%</h3>
+                        <p>Uptime SLA</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3><i class="fas fa-microchip"></i> 5.6GHz</h3>
+                        <p>Dedicated cores</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>50+</h3>
+                        <p>Global locations</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3><i class="fas fa-clock"></i> 24/7</h3>
+                        <p>Minecraft experts</p>
+                    </div>
+                </div>
+                <div class="minecraft-icon">
+                    <i class="fab fa-buffer"></i> <i class="fas fa-dragon"></i>  Java + Bedrock ready
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <div id="features"></div>
+    <div class="section-title">Engineered for Performance</div>
+    <div class="section-sub">Everything you need to run a flawless Minecraft server — from Vanilla to Modpacks.</div>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Instant Setup</h3>
+            <p>Your server is ready in under 60 seconds. One-click modpack installs, plugins & more.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Enterprise DDoS Protection</h3>
+            <p>Layer 4 & Layer 7 mitigation with 1Tbps+ capacity — never get knocked offline.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <h3>NVMe + 5Gbit Network</h3>
+            <p>Lightning-fast world loading and low latency for players around the globe.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-code-branch"></i></div>
+            <h3>Full Version Control</h3>
+            <p>Switch between Paper, Forge, Fabric, Spigot, Vanilla or any custom JAR.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-database"></i></div>
+            <h3>Unlimited Slots</h3>
+            <p>No player limits, scale from 5 to 500+ players without extra fees.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h3>Auto Backups</h3>
+            <p>Daily off-server backups with 1-click restore. Your world is always safe.</p>
+        </div>
+    </div>
+
+    <!-- Pricing Plans -->
+    <div id="pricing"></div>
+    <div class="section-title">Simple, Transparent Pricing</div>
+    <div class="section-sub">No hidden fees. Upgrade or downgrade anytime.</div>
+    <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="plan">
+            <div class="plan-name">CraftNode</div>
+            <div class="plan-price">$9.99 <span>/month</span></div>
+            <ul class="plan-features">
+                <li><i class="fas fa-check-circle"></i> 4GB DDR5 RAM</li>
+                <li><i class="fas fa-check-circle"></i> 2 vCPU (Ryzen)</li>
+                <li><i class="fas fa-check-circle"></i> 50GB NVMe SSD</li>
+                <li><i class="fas fa-check-circle"></i> Unlimited players*</li>
+                <li><i class="fas fa-check-circle"></i> Free Subdomain</li>
+                <li><i class="fas fa-check-circle"></i> DDoS Protection</li>
+            </ul>
+            <a href="#" class="btn btn-outline btn-plan">Choose Plan</a>
+        </div>
+        <!-- Popular Plan -->
+        <div class="plan popular">
+            <div class="plan-name">CraftPro</div>
+            <div class="plan-price">$19.99 <span>/month</span></div>
+            <ul class="plan-features">
+                <li><i class="fas fa-check-circle"></i> 8GB DDR5 RAM</li>
+                <li><i class="fas fa-check-circle"></i> 4 vCPU (High Freq)</li>
+                <li><i class="fas fa-check-circle"></i> 150GB NVMe SSD</li>
+                <li><i class="fas fa-check-circle"></i> Unlimited slots + priority</li>
+                <li><i class="fas fa-check-circle"></i> Free MySQL Database</li>
+                <li><i class="fas fa-check-circle"></i> Dedicated IP (+$3)</li>
+            </ul>
+            <a href="#" class="btn btn-primary btn-plan">Best Value</a>
+        </div>
+        <!-- Ultimate Plan -->
+        <div class="plan">
+            <div class="plan-name">CraftUltra</div>
+            <div class="plan-price">$39.99 <span>/month</span></div>
+            <ul class="plan-features">
+                <li><i class="fas fa-check-circle"></i> 16GB DDR5 RAM</li>
+                <li><i class="fas fa-check-circle"></i> 8 vCPU (Dedicated)</li>
+                <li><i class="fas fa-check-circle"></i> 400GB NVMe SSD</li>
+                <li><i class="fas fa-check-circle"></i> Unlimited modpacks</li>
+                <li><i class="fas fa-check-circle"></i> Priority Support 24/7</li>
+                <li><i class="fas fa-check-circle"></i> Free Dedicated IP</li>
+            </ul>
+            <a href="#" class="btn btn-outline btn-plan">Go Ultimate</a>
+        </div>
+    </div>
+
+    <!-- Advanced control panel banner -->
+    <div class="cta-section">
+        <i class="fas fa-tachometer-alt" style="font-size: 3rem; color: #5b6cff; margin-bottom: 20px;"></i>
+        <h2>Powerful Multicraft & Pterodactyl Panel</h2>
+        <p style="max-width: 600px; margin: 0 auto;">Full file access, console, schedules, plugin manager, and real-time metrics. Mobile-friendly & blazing fast.</p>
+        <a href="#" class="btn btn-primary"><i class="fas fa-cog"></i> Live Demo Panel</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo"><i class="fas fa-cube"></i> CraftHost</div>
+                <p style="margin-top: 12px; max-width: 260px;">The next-gen Minecraft host built for performance, stability, and community.</p>
+                <div style="margin-top: 20px; display: flex; gap: 18px;">
+                    <a href="#" style="color:#7f8db0;"><i class="fab fa-discord fa-lg"></i></a>
+                    <a href="#" style="color:#7f8db0;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color:#7f8db0;"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div>
+                    <h4>Platform</h4>
+                    <a href="#">Pricing</a><br><a href="#">Features</a><br><a href="#">Modpacks</a>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <a href="#">About</a><br><a href="#">Affiliates</a><br><a href="#">Blog</a>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <a href="#">Terms</a><br><a href="#">Privacy</a><br><a href="#">GDPR</a>
+                </div>
+                <div>
+                    <h4>Support</h4>
+                    <a href="#">Documentation</a><br><a href="#">Contact 24/7</a><br><a href="#">Status</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <i class="fas fa-copyright"></i> 2025 CraftHost — Minecraft Hosting. Not affiliated with Mojang AB.
+        </div>
+    </footer>
+</div>
+
+<!-- Interactive dummy "Order now" modal simulation (lightweight) -->
+<script>
+    (function() {
+        // Add smooth click for buttons to mimic alert for demo
+        const ctaButtons = document.querySelectorAll('.btn-primary, .btn-outline, .btn-plan');
+        ctaButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // For demo purpose, only show a friendly message but not breaking anchor scroll
+                if (btn.classList.contains('btn-plan') || btn.innerText.includes('Get Started') || btn.innerText.includes('Choose Plan') || btn.innerText.includes('Go Ultimate') || btn.innerText.includes('Best Value') || btn.innerText.includes('Live Demo')) {
+                    e.preventDefault();
+                    // floating notification style
+                    const toast = document.createElement('div');
+                    toast.innerText = '✨ CraftHost demo: server setup would start here! (interactive preview)';
+                    toast.style.position = 'fixed';
+                    toast.style.bottom = '30px';
+                    toast.style.left = '50%';
+                    toast.style.transform = 'translateX(-50%)';
+                    toast.style.backgroundColor = '#1f2937';
+                    toast.style.color = '#e0e7ff';
+                    toast.style.padding = '12px 24px';
+                    toast.style.borderRadius = '60px';
+                    toast.style.fontWeight = '500';
+                    toast.style.backdropFilter = 'blur(12px)';
+                    toast.style.border = '1px solid #5b6cff';
+                    toast.style.zIndex = '9999';
+                    toast.style.fontSize = '0.9rem';
+                    toast.style.boxShadow = '0 10px 25px -5px rgba(0,0,0,0.5)';
+                    document.body.appendChild(toast);
+                    setTimeout(() => {
+                        toast.style.opacity = '0';
+                        setTimeout(() => toast.remove(), 400);
+                    }, 2800);
+                }
+            });
+        });
+
+        // simple navigation scroll for #features and #pricing
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const targetId = href.substring(1);
+                    const targetElem = document.getElementById(targetId);
+                    if (targetElem) {
+                        e.preventDefault();
+                        targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            });
+        });
+        // add same for hero buttons with hash navigation
+        const viewPlansBtn = document.querySelector('.hero-buttons .btn-outline');
+        if(viewPlansBtn) {
+            viewPlansBtn.addEventListener('click', (e) => {
+                const pricingSection = document.getElementById('pricing');
+                if(pricingSection) {
+                    e.preventDefault();
+                    pricingSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+    })();
+</script>
+
+<!-- Additional modern design nuance: particle/dynamic no extra libs but nice background effect optional -->
+<style>
+    body {
+        background: radial-gradient(circle at 10% 20%, #0c1020, #080b12);
+    }
+    .feature-card, .plan, .hero-stats {
+        backdrop-filter: blur(2px);
+        background: rgba(14, 18, 28, 0.8);
+    }
+    .btn-primary, .btn-outline {
+        font-weight: 600;
+    }
+    .section-title {
+        background: linear-gradient(135deg, #ffffff, #bac8ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+</style>
+</body>
+</html>
